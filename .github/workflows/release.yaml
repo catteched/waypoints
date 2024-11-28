@@ -17,7 +17,7 @@ jobs:
       - run: stylua --check .
       - run: pesde install
       - run: rojo build --output build.rbxm release.project.json
-      - run: echo "VERSION=$(cat pesde.toml | grep -Po 'version = \"\K([0-9.]+)')" >> "$GITHUB_ENV"
+      - run: echo "VERSION=v$(cat pesde.toml | grep -Po 'version = \"\K([0-9.]+)')" >> "$GITHUB_ENV"
       - uses: ncipollo/release-action@v1
         with:
           artifacts: "build.rbxm"
