@@ -72,6 +72,76 @@ To specify a group (and the ranks) which can use the waypoints, you would use th
 }
 ```
 
+## Waypoints
+
+You can create waypoints for your game by adding in data to the `waypoints` module under the `waypoints` localscript. You are provided a few methods to help you create waypoints, like:
+
+-   `waypoint.FolderWaypoint`: Creates waypoints based on a specified folder.
+-   `waypoint.Waypoint`: Creates a single waypoint.
+-   `waypoint.BasicWaypoint`: Creates a basic waypoint with just a name, color, and position. (You are also allowed to add highlights to it)
+-   `waypoint.GroupWaypoint`: Basically BasicWaypoint, but with a extra group parameter to specify what group it belongs to.
+
+### Format
+
+The format for the waypoints table is quite simple, it uses an id system to identify each waypoint.
+
+```lua
+local waypoints = {
+    ["waypoint_id"] = waypoint.BasicWaypoint("Waypoint Name", Color3.new(1, 1, 1), Vector3.zero)
+}
+```
+
+### Waypoint
+
+The main method to create a waypoint is `waypoint.Waypoint` which allows for all the customization you need for a waypoint.
+
+```lua
+{
+    ["waypoint_id"] = waypoint.Waypoint(
+        "Waypoint Name",
+        "Group Name",
+        Vector3.zero,
+        {
+            color = Color3.new(1, 1, 1),
+        }
+    )
+}
+```
+
+### FolderWaypoint
+
+This is the easiest way to dynamically create waypoints without having to edit the modulescript. All it takes in is a `waypoints table`, and a `folder` to dynamically add waypoints.
+
+```lua
+local waypoints = {...}
+
+waypoint.FolderWaypoint(waypoints, game.Workspace.Waypoints)
+```
+
+It'll add each `BasePart` in the folder as a waypoint with the name and position of the part. It also utilizes `Attributes` to specify the `id` and `group` of the waypoint. Do note that the `id` must be unique and present in every part in the folder. The function can and will error if it cannot find the `id` attribute. Also, any other `BaseParts` which is a child of the waypoint part will be counted as a highlight part.
+
+### BasicWaypoint
+
+A simplistic way to create a waypoint with just a name, color, and position.
+<sub>The function does also allow a 4th argument of parts to highlight.</sub>
+
+```lua
+{
+    ["waypoint_id"] = waypoint.BasicWaypoint("Waypoint Name", Color3.new(1, 1, 1), Vector3.zero)
+}
+```
+
+### GroupWaypoint
+
+An extended version of `BasicWaypoint` which allows you to specify a group for the waypoint.
+<sub>It also allows a 5th argument of parts to highlight.</sub>
+
+```lua
+{
+    ["waypoint_id"] = waypoint.GroupWaypoint("Waypoint Name", "Group Name", Color3.new(1, 1, 1), Vector3.zero)
+}
+```
+
 # Usage
 
 Using the built-in chat system provided with the waypoints system, you can use `/waypoints` command to open all waypoints that are available to you. If you would like to show a group of waypoints, you can use `/waypoints <group>` to show only the waypoints in that group. And if you would like to hide the waypoints, you can use `/waypoints hide`.
