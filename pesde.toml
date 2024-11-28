@@ -1,5 +1,5 @@
 name = "catteched/waypoints"
-version = "1.0.0"
+version = "1.0.1"
 description = "A simple waypoints viewer"
 authors = ["metamethods"]
 repository = "https://github.com/catteched/waypoints"
