@@ -15,10 +15,10 @@ jobs:
       - uses: CompeyDev/setup-rokit@v0.1.2
       - run: selene .
       - run: stylua --check .
+      - run: pesde install
       - run: rojo build --output build.rbxm release.project.json
       - run: echo "VERSION=$(cat pesde.toml | grep -Po 'version = \"\K([0-9.]+)')" >> "$GITHUB_ENV"
-      - run: echo "NAME=$(cat pesde.toml | grep -Po 'name = \".*/\K([a-zA-Z_]+)')" >> "$GITHUB_ENV"
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: ${{ format('{0}.rbxm', env.NAME) }}
+          artifacts: "build.rbxm"
           tag: ${{ env.VERSION }}
