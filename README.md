@@ -148,6 +148,8 @@ Using the built-in chat system provided with the waypoints system, you can use `
 
 # Terms of Use
 
+This project is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+
 ## Guidelines
 
 -   You are allowed to **modify** and **use** the work in either a commercial or non-commercial contexts[^1]
