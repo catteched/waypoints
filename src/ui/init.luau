@@ -40,8 +40,11 @@ local function ui(
 		return if distance() >= config.maxFadeDistance then 0 else 1
 	end
 
+	local ringOffset = vide.source(0)
+
 	vide.cleanup(RunService.RenderStepped:Connect(function()
 		distance(localPlayer:DistanceFromCharacter(waypoint.position))
+		ringOffset(math.abs(math.sin(tick() * 2)))
 	end))
 
 	if waypoint.highlights then
@@ -75,6 +78,26 @@ local function ui(
 			AnchorPoint = Vector2.new(0.5, 0.5),
 			BackgroundColor3 = waypoint.color,
 			BackgroundTransparency = vide.spring(circleTransparency, 0.5),
+
+			vide.create "Frame" {
+				Name = "Ring",
+				Size = function()
+					return UDim2.new(1, ringOffset() * 15, 1, ringOffset() * 15)
+				end,
+				Position = UDim2.fromScale(0.5, 0.5),
+				AnchorPoint = Vector2.new(0.5, 0.5),
+				BackgroundTransparency = 1,
+
+				vide.create "UICorner" {
+					CornerRadius = UDim.new(1, 0),
+				},
+
+				vide.create "UIStroke" {
+					Color = waypoint.color,
+					Thickness = 1,
+					Transparency = vide.spring(circleTransparency, 0.5),
+				},
+			},
 
 			vide.create "UICorner" {
 				CornerRadius = UDim.new(1, 0),
