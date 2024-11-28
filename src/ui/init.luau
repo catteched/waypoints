@@ -34,6 +34,9 @@ local function ui(
 	end
 
 	local circleTransparency = function()
+		if not enabled() then
+			return 1
+		end
 		return if distance() >= config.maxFadeDistance then 0 else 1
 	end
 
