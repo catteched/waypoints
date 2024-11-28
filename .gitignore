@@ -1,0 +1,17 @@
+# Project place file
+/waypoints.rbxlx
+
+# Roblox Studio lock files
+/*.rbxlx.lock
+/*.rbxl.lock
+
+# Roblox Studio model files
+/*.rbxm
+
+# Pesde
+roblox_packages/
+.pesde/
+/pesde.lock
+
+# Rojo files
+/sourcemap.json

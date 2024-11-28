@@ -1,0 +1,6 @@
+{
+    "luau-lsp.require.directoryAliases": {
+        "@lune/": "~/.lune/.typedefs/0.8.9/"
+    },
+    "files.eol": "\n" // If youre on windows
+}

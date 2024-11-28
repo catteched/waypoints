@@ -1,0 +1,23 @@
+name = "catteched/waypoints"
+version = "1.0.0"
+description = "A simple waypoints viewer"
+authors = ["metamethods"]
+repository = "https://github.com/catteched/waypoints"
+license = "CC BY"
+wally_allowed = true
+
+[target]
+environment = "roblox"
+
+[scripts]
+roblox_sync_config_generator = ".pesde/roblox_sync_config_generator.luau"
+sourcemap_generator = ".pesde/sourcemap_generator.luau"
+
+[indices]
+default = "https://github.com/daimond113/pesde-index"
+
+[wally_indices]
+default = "https://github.com/UpliftGames/wally-index"
+
+[dependencies]
+vide = { wally = "centau/vide", version = "^0.3.1" }
