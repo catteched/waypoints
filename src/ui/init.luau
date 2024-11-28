@@ -40,9 +40,9 @@ local function ui(
 		return if distance() >= config.maxFadeDistance then 0 else 1
 	end
 
-	local renderSteppedConnection = RunService.RenderStepped:Connect(function()
+	vide.cleanup(RunService.RenderStepped:Connect(function()
 		distance(localPlayer:DistanceFromCharacter(waypoint.position))
-	end)
+	end))
 
 	if waypoint.highlights then
 		for _, highlightPart in waypoint.highlights do
@@ -59,8 +59,6 @@ local function ui(
 			}
 		end
 	end
-
-	vide.cleanup(renderSteppedConnection)
 
 	return vide.create "BillboardGui" {
 		Name = waypoint.name,
